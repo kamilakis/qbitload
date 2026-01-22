@@ -1,5 +1,8 @@
 # qbitload
 
+[![Firefox Add-on](https://img.shields.io/badge/Firefox-Add--on-orange?logo=firefox)](https://addons.mozilla.org/firefox/addon/qbitload/)
+[![GitHub](https://img.shields.io/github/license/kamilakis/qbitload)](https://github.com/kamilakis/qbitload/blob/master/LICENSE)
+
 A Firefox extension to send torrent/magnet links to qBittorrent with category support and connection status indicators.
 
 > **Fork Notice:** This project is a fork of [send-to-qbittorrent](https://github.com/frogmech/send-to-qbittorrent) by [frogmech](https://github.com/frogmech). Thank you for the original work!
@@ -15,7 +18,13 @@ A Firefox extension to send torrent/magnet links to qBittorrent with category su
 
 ## Installation
 
-1. Download the latest release
+### From Firefox Add-ons (Recommended)
+
+Install directly from [Firefox Add-ons (AMO)](https://addons.mozilla.org/firefox/addon/qbitload/).
+
+### Manual Installation
+
+1. Download the latest release from [GitHub Releases](https://github.com/kamilakis/qbitload/releases)
 2. In Firefox, go to `about:addons` > gear icon > "Install Add-on From File..."
 3. Select the downloaded `.xpi` file
 
@@ -50,6 +59,10 @@ You **must** disable Cross-Site Request Forgery (CSRF) protection in qBittorrent
 ## License
 
 GPL-3.0 License - see [LICENSE](LICENSE) file (inherited from original project).
+
+## Contributing
+
+Issues and pull requests are welcome at [GitHub](https://github.com/kamilakis/qbitload).
 
 ## Credits
 

@@ -3,7 +3,8 @@
   "name": "qbitload",
   "version": "1.0.0",
   "description": "Send torrent/magnet links to qBittorrent with category support and connection status",
-  "author": "https://github.com/kamilakis",
+  "author": "kamilakis",
+  "homepage_url": "https://github.com/kamilakis/qbitload",
   "permissions": [
     "contextMenus",
     "storage",
