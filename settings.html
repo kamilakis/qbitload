@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      width: 300px;
+      min-height: 533px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    select {
+      border-radius: 4px;
+    }
+    .dark-mode-body {
+      background-color: black;
+      color: white;
+    }
+    .dark-mode-others {
+      background-color: #3C3C4399;
+      color: white;
+    }
+    .text {
+      position: absolute;
+      top: 3%;
+      left: 150px;
+    }
+    .csrf-button {
+      position: absolute;
+      bottom: 28px;
+      left: 20px;
+    }
+    .switch {
+      position: absolute;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      right: 20px;
+      gap: 20px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .1s;
+      transition: .1s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .1s;
+      transition: .1s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+    .toggle-switch-container {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      gap: 20px;
+    }
+    .toggle-switch-label {
+      font-size: 18px;
+      user-select: none;
+      position: relative;
+      top: -3px;
+    }
+    .toggle-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .info-icon {
+      font-size: 11px;
+      font-weight: bold;
+      border: 1px solid #999;
+      border-radius: 75%;
+      width: 16px;
+      height: 16px;
+      text-align: center;
+      line-height: 14px;
+      cursor: help;
+    }
+    .back {
+      position: absolute;
+      bottom: 28px;
+      right: 20px;
+    }
+    .no-animation *,
+    .no-animation .slider,
+    .no-animation .slider:before {
+      transition: none !important;
+    }
+    .category-section {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #ccc;
+    }
+    .category-section h4 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+    }
+    .category-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+    .category-row select {
+      flex: 1;
+      min-width: 0;
+      padding: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .small-button {
+      padding: 8px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      flex-shrink: 0;
+    }
+    .link-button {
+      background: none;
+      border: none;
+      color: #2196F3;
+      cursor: pointer;
+      padding: 0;
+      font-size: 13px;
+      text-decoration: underline;
+    }
+    .link-button:hover {
+      color: #1976D2;
+    }
+    .new-category-form {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .new-category-form.visible {
+      display: flex;
+    }
+    .new-category-form input {
+      width: 100%;
+      margin-bottom: 0;
+      box-sizing: border-box;
+    }
+    .new-category-form .button-row {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    .new-category-form label {
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <image src="icons/icon-96.png"></image>
+    <div class="text">
+    <h2>Settings</h2>
+    </div>
+  </div>
+  <div class="toggle-group">
+    <div class="toggle-switch-container">
+      <span class="toggle-switch-label">Enable dark mode</span>
+      <label class="switch">
+        <input type="checkbox" id="darkModeSlider">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="toggle-switch-container">
+      <span class="toggle-switch-label">Enable left-click sending</span>
+      <span class="info-icon" title="When enabled, left-clicking magnet links will send them to qBittorrent.">i</span>
+      <label class="switch">
+        <input type="checkbox" id="leftClickSlider">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+  <div class="category-section">
+    <h4>Default Category</h4>
+    <div class="category-row">
+      <select id="defaultCategorySelect">
+        <option value="">No category</option>
+      </select>
+      <button id="refreshCategoriesButton" class="small-button" title="Refresh categories">&#8635;</button>
+    </div>
+    <div class="new-category-form" id="newCategoryForm">
+      <div>
+        <label for="newCategoryInput">Category name:</label>
+        <input type="text" id="newCategoryInput" placeholder="Enter category name">
+      </div>
+      <div>
+        <label for="newCategorySavePath">Save path (optional):</label>
+        <input type="text" id="newCategorySavePath" placeholder="/path/to/downloads">
+      </div>
+      <div class="button-row">
+        <button id="cancelNewCategoryButton" class="small-button">Cancel</button>
+        <button id="createCategoryButton" class="small-button">Create</button>
+      </div>
+    </div>
+    <button id="showNewCategoryButton" class="link-button">+ Create new category</button>
+  </div>
+  <button id="backButton" class="back">Back</button>
+  <button id="disableCSRF" class="csrf-button">Disable CSRF</button>
+  <script src="settings.js"></script>
+</body>
+</html>

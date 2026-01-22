@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Category</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 15px;
+      margin: 0;
+      min-height: 150px;
+    }
+    h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    select, input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .button-row {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button.primary {
+      background-color: #2196F3;
+      color: white;
+      border-color: #2196F3;
+    }
+    button.primary:hover {
+      background-color: #1976D2;
+    }
+    .new-category-form {
+      display: none;
+    }
+    .new-category-form.visible {
+      display: block;
+    }
+    .new-category-form label {
+      font-weight: normal;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .new-category-form input {
+      margin-bottom: 10px;
+    }
+    .dark-mode-body {
+      background-color: black;
+      color: white;
+    }
+    .dark-mode-others {
+      background-color: #3C3C4399;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h3>Choose Category</h3>
+  <label for="categorySelect">Category:</label>
+  <select id="categorySelect">
+    <option value="">No category</option>
+    <option value="__new__">+ Create new category...</option>
+  </select>
+  <div class="new-category-form" id="newCategoryForm">
+    <label for="newCategoryInput">New category name:</label>
+    <input type="text" id="newCategoryInput" placeholder="Enter category name">
+    <label for="newCategorySavePath">Save path (optional):</label>
+    <input type="text" id="newCategorySavePath" placeholder="/path/to/downloads">
+  </div>
+  <div class="button-row">
+    <button id="cancelButton">Cancel</button>
+    <button id="sendButton" class="primary">Send</button>
+  </div>
+  <script src="category-picker.js"></script>
+</body>
+</html>
