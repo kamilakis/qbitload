@@ -8,7 +8,7 @@ function setBadge(text, color) {
 async function checkServerStatus() {
   try {
     const { url } = await getCredentials();
-    if (!url || url === 'undefined://undefined:undefined') {
+    if (!url || url === 'undefined://undefined:undefined' || url === 'undefined://undefined') {
       setBadge('?', '#888');  // Gray - not configured
       return false;
     }
@@ -31,10 +31,14 @@ async function checkServerStatus() {
 
 async function getCredentials() {
     const credentials = await browser.storage.local.get(['apiScheme', 'apiHost', 'apiPort', 'apiUsername', 'apiPassword']);
+    const portSuffix = credentials.apiPort != null && credentials.apiPort !== ''
+      ? `:${credentials.apiPort}`
+      : '';
+  
     return {
       username: credentials.apiUsername,
       password: credentials.apiPassword,
-      url: `${credentials.apiScheme}://${credentials.apiHost}:${credentials.apiPort}`,
+      url: `${credentials.apiScheme}://${credentials.apiHost}${portSuffix}`,
       credentials: credentials
     };
 }
@@ -246,3 +250,4 @@ browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     loginTabs.delete(tabId);
   }
 });
+
